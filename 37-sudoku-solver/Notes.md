@@ -1,1 +1,1 @@
-<h2>sudoku-solver Notes</h2><hr>First I understood matrix and recursion in that much 
+<h2>sudoku-solver Notes</h2><hr>First I understood matrix and recursion in that much.
