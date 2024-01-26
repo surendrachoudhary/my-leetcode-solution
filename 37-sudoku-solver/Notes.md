@@ -1,1 +1,1 @@
-<h2>sudoku-solver Notes</h2><hr>First I understood in that much 
+<h2>sudoku-solver Notes</h2><hr>First I understood matrix an  in that much 
