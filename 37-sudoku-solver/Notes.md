@@ -1,1 +1,1 @@
-<h2>sudoku-solver Notes</h2><hr>First 
+<h2>sudoku-solver Notes</h2><hr>First I understood 
