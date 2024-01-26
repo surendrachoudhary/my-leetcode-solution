@@ -1,1 +1,1 @@
-<h2>n-queens-ii Notes</h2><hr>Easy to solve as I already solve the n-queen 
+<h2>n-queens-ii Notes</h2><hr>Easy to solve as I already solve the n-queen question. 
