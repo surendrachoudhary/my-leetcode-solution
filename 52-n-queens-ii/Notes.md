@@ -1,1 +1,1 @@
-<h2>n-queens-ii Notes</h2><hr>Easy to 
+<h2>n-queens-ii Notes</h2><hr>Easy to solve as 
