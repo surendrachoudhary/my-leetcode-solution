@@ -1,1 +1,1 @@
-<h2>game-of-life Notes</h2><hr>This 
+<h2>game-of-life Notes</h2><hr>This is sloved by only me. 
