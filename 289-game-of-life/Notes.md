@@ -1,1 +1,1 @@
-<h2>game-of-life Notes</h2><hr>This is solved by only me. A few days before I was not that good at the matrix and now i am doing very well in it. 
+<h2>game-of-life Notes</h2><hr>This is solved by only me. A few days before I was not that good at the matrix and now I am doing very well in it. 
