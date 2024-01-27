@@ -1,1 +1,1 @@
-<h2>game-of-life Notes</h2><hr>This is solved by only me. 
+<h2>game-of-life Notes</h2><hr>This is solved by only me. Few days 
