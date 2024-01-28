@@ -13,24 +13,30 @@
 
 class Solution:
     def maxPathSum(self, root: Optional[TreeNode]) -> int:
-        # Initialize max_sum to negative infinity to ensure it gets updated during traversal
-        self.max_sum = float('-inf')
+        # Initialize the result list to store the maximum path sum
+        res = [float('-inf')]  # Initialize to negative infinity
 
-        def max_path_sum_helper(node):
-            if not node:
+        # Helper function to calculate the maximum path sum for a subtree
+        def maxpsum(root):
+            # Base case: If the current node is None, return 0
+            if not root:
                 return 0
 
             # Recursively calculate the maximum path sum for the left and right subtrees
-            left_sum = max(max_path_sum_helper(node.left), 0)
-            right_sum = max(max_path_sum_helper(node.right), 0)
+            leftMax = max(maxpsum(root.left), 0)
+            rightMax = max(maxpsum(root.right), 0)
 
-            # Update the maximum path sum by considering the current node
-            self.max_sum = max(self.max_sum, node.val + left_sum + right_sum)
+            # Calculate the current path sum including the current node
+            current_path_sum = root.val + leftMax + rightMax
 
-            # Return the maximum path sum considering only one side (either left or right, which one is maximum in value)
-            return node.val + max(left_sum, right_sum)
+            # Update the global maximum path sum using the current path sum
+            res[0] = max(res[0], current_path_sum)
+
+            # Return the maximum path sum considering only one side (either left or right)
+            return root.val + max(leftMax, rightMax)
 
         # Start the recursive traversal from the root
-        max_path_sum_helper(root)
+        maxpsum(root)
 
-        return self.max_sum
+        # Return the final result stored in the res list
+        return res[0]
