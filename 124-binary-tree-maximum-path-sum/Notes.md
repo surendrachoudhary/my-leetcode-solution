@@ -1,1 +1,1 @@
-<h2>binary-tree-maximum-path-sum Notes</h2><hr>Cool stuff and nice grasp of maximum type question in tree. 
+<h2>binary-tree-maximum-path-sum Notes</h2><hr>Cool stuff and a nice grasp of maximum type question in tree. 
