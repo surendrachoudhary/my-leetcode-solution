@@ -1,1 +1,1 @@
-<h2>median-of-two-sorted-arrays Notes</h2><hr>Accept with time complexity O(m + n)
+<h2>median-of-two-sorted-arrays Notes</h2><hr>Accept with time complexity O(m + n) where m and n are the lengths of the input arrays nums1 and nums2, respectively.
