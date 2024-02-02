@@ -1,37 +1,40 @@
-# Definition for singly-linked list.
-# class ListNode:
-#     def __init__(self, val=0, next=None):
-#         self.val = val
-#         self.next = next
+import heapq
+
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
 class Solution:
-    def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
+    def mergeKLists(self, lists):
+        # Check if the input list of linked lists is empty or None
+        if not lists:
+            return None 
 
-        if not lists or len(lists) == 0:
-            return None
+        # Initialize a min-heap to keep track of the smallest element from each linked list
+        min_heap = []
 
-        def merge2list(list1, list2):
-            cur = dummy = ListNode()
-            while list1 and list2:               
-                if list1.val < list2.val:
-                    cur.next = list1
-                    list1, cur = list1.next, list1
-                else:
-                    cur.next = list2
-                    list2, cur = list2.next, list2
-                    
-            if list1 or list2:
-                cur.next = list1 if list1 else list2
-                
-            return dummy.next
+        # Populate the heap with the first element from each non-empty linked list
+        for i, node in enumerate(lists):
+            if node:
+                heapq.heappush(min_heap, (node.val, i, node))
 
+        # Initialize a dummy node to build the result linked list
+        dummy = ListNode()
+        curr = dummy
 
-        head = lists[0]
-        for i in lists[1:]:
-            if i:
-              head = merge2list(head, i)
-            else:
-                continue
+        # Process the min-heap until it is empty
+        while min_heap:
+            # Pop the smallest element from the heap
+            val, index, node = heapq.heappop(min_heap)
 
-        return head
+            # Add the popped element to the result linked list
+            curr.next = ListNode(val)
+            curr = curr.next 
 
-        
+            # Move to the next element in the corresponding list
+            if node.next:
+                heapq.heappush(min_heap, (node.next.val, index, node.next))
+
+        # Return the merged sorted linked list
+        return dummy.next
