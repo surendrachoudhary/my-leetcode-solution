@@ -1,1 +1,1 @@
-<h2>merge-k-sorted-lists Notes</h2><hr>using Array and sorting to solve in O(N log N) 
+<h2>merge-k-sorted-lists Notes</h2><hr>using Array and sorting to solve in O(N log N) time complexi
