@@ -1,1 +1,1 @@
-<h2>merge-k-sorted-lists Notes</h2><hr>Another solution us
+<h2>merge-k-sorted-lists Notes</h2><hr>Another solution using merge sort 
