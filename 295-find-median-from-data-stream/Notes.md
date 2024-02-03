@@ -1,1 +1,1 @@
-<h2>find-median-from-data-stream Notes</h2><hr>Solution using heap (Priority queue)
+<h2>find-median-from-data-stream Notes</h2><hr>Solution using heap (Priority Queue)
