@@ -1,32 +1,37 @@
-class MedianFinder:
+import heapq
 
+class MedianFinder:
     def __init__(self):
-        self.arr = []
+        # Initialize two heaps: self.small for the max heap (representing the first half of numbers)
+        # and self.large for the min heap (representing the second half of numbers).
+        self.small, self.large = [], []
 
     def addNum(self, num: int) -> None:
-        self.arr.append(num)
+        # Add the negation of the number to create a max heap in Python.
+        heapq.heappush(self.small, -1 * num)
+
+        # Maintain balance between the two heaps.
+        if self.small and self.large and (-1 * self.small[0] > self.large[0]):
+            val = -1 * heapq.heappop(self.small)
+            heapq.heappush(self.large, val)
+
+        # Ensure the size difference between heaps does not exceed 1.
+        if len(self.small) > len(self.large) + 1:
+            val = -1 * heapq.heappop(self.small)
+            heapq.heappush(self.large, val)
+
+        if len(self.large) > len(self.small) + 1:
+            val = heapq.heappop(self.large)
+            heapq.heappush(self.small, -1 * val)
 
     def findMedian(self) -> float:
-        self.arr.sort()
-        if len(self.arr) == 1:
-            return self.arr[0]
-        
-        result = 0
+        # Return the top of the max heap if its size is greater.
+        if len(self.small) > len(self.large):
+            return -1 * self.small[0]
 
-        if len(self.arr) % 2 == 0:
-            mid = (len(self.arr)//2) -1
-            mid_1 = (len(self.arr)//2 + 1) -1
-            result = (self.arr[mid] + self.arr[mid_1])/2
-        else:
-            result = self.arr[len(self.arr)//2]
+        # Return the top of the min heap if its size is greater.
+        if len(self.large) > len(self.small):
+            return self.large[0]
 
-        return result
-
-
-
-
-
-# Your MedianFinder object will be instantiated and called as such:
-# obj = MedianFinder()
-# obj.addNum(num)
-# param_2 = obj.findMedian()
+        # Calculate and return the median if both heaps are of equal size.
+        return (-1 * self.small[0] + self.large[0]) / 2
