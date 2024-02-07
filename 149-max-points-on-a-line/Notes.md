@@ -1,1 +1,1 @@
-<h2>max-points-on-a-line Notes</h2><hr>Brutoforce approach to solve in O(n^3)
+<h2>max-points-on-a-line Notes</h2><hr>Brute force approach to solve in O(n^3)
