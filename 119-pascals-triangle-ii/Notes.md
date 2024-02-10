@@ -1,1 +1,1 @@
-<h2>pascals-triangle-ii Notes</h2><hr>Navie solution to the problem. 
+<h2>pascals-triangle-ii Notes</h2><hr>Navie's solution to the problem. 
