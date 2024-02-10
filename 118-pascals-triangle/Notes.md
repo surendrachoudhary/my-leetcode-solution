@@ -1,1 +1,1 @@
-<h2>pascals-triangle Notes</h2><hr>It's like bruteforce approcach. 
+<h2>pascals-triangle Notes</h2><hr>It's like bruteforce approach. 
