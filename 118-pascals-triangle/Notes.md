@@ -1,1 +1,1 @@
-<h2>pascals-triangle Notes</h2><hr>It's like a brute-force approach. 
+<h2>pascals-triangle Notes</h2><hr>using 
