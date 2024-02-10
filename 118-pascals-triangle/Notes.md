@@ -1,1 +1,1 @@
-<h2>pascals-triangle Notes</h2><hr>using nCr 
+<h2>pascals-triangle Notes</h2><hr>using nCr formula. 
