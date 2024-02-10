@@ -1,1 +1,1 @@
-<h2>pascals-triangle Notes</h2><hr>It's like brut
+<h2>pascals-triangle Notes</h2><hr>It's like bruteforce approcach. 
