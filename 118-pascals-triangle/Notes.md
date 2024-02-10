@@ -1,1 +1,1 @@
-<h2>pascals-triangle Notes</h2><hr>using the nCr formula which is used in pascal's . 
+<h2>pascals-triangle Notes</h2><hr>using the nCr formula which is used in pascal's Tr. 
