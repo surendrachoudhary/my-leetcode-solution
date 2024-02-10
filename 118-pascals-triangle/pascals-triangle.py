@@ -1,22 +1,33 @@
-#O(n^2) time complexity 
+#time complexity - O(n^3)
 
 class Solution:
     def generate(self, numRows: int) -> List[List[int]]:
-        # Initialize the result list with the first row containing a single element 1
-        res = [[1]]
+        # Initialize an empty list to store the resulting triangle
+        res = []
 
-        # Loop through to generate subsequent rows up to the given numRows
-        for i in range(numRows-1):
-            # Create a temporary row with padding of 0s on both sides
-            temp = [0] + res[-1] + [0]
-            row = []
+        # Define a helper function to calculate nCr
+        def nCr(r, c):
+            value = 1
 
-            # Calculate values for the current row based on the previous row
-            for j in range(len(res[-1])+1):
-                row.append(temp[j] + temp[j+1])
+            # Calculate nCr using the formula (r choose c)
+            for i in range(c):
+                value *= r-i
+                value //= i+1
 
-            # Append the generated row to the result list
-            res.append(row)
-        
-        # Return the resulting Pascal's Triangle up to the specified number of rows
+            return value
+
+        # Iterate over each row in the triangle
+        for i in range(numRows):
+            # Initialize an empty list to store the current row
+            cur_res = []
+
+            # Iterate over each column in the current row
+            for j in range(i+1):
+                # Append the value of nCr to the current row
+                cur_res.append(nCr(i, j))
+            
+            # Append the current row to the result triangle
+            res.append(cur_res)
+
+        # Return the resulting Pascal's Triangle
         return res
