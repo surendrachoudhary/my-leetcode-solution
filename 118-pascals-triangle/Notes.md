@@ -1,1 +1,1 @@
-<h2>pascals-triangle Notes</h2><hr>using the nCr formula which is used in pascal's Triangle. 
+<h2>pascals-triangle Notes</h2><hr>using the nCr formula which is used in Pascal's Triangle. 
