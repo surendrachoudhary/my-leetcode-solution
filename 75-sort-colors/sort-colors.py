@@ -10,21 +10,25 @@ class Solution:
         num_dict = collections.defaultdict(int)
         n = len(nums)
 
+
+        cnt0 = 0
+        cnt1 = 0
+        cnt2 = 0
         # Count occurrences of each color
         for i in nums:
-            num_dict[i] += 1
-
-        # Assign the counts to respective variables
-        zero_val = num_dict[0]
-        one_val = num_dict[1]
-        two_val = num_dict[2]
+            if i == 0:
+                cnt0 += 1
+            elif i == 1:
+                cnt1 += 1
+            else:
+                cnt2 += 1
 
         # Replace the values in the original list with sorted colors
-        for i in range(zero_val):
+        for i in range(cnt0):
             nums[i] = 0
 
-        for i in range(zero_val, zero_val + one_val):
+        for i in range(cnt0, cnt0 + cnt1):
             nums[i] = 1
 
-        for i in range(zero_val + one_val, zero_val + one_val + two_val):
+        for i in range(cnt0 + cnt1, cnt0 + cnt1 + cnt2):
             nums[i] = 2
