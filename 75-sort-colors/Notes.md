@@ -1,1 +1,1 @@
-<h2>sort-colors Notes</h2><hr>My solution with effective tiem 
+<h2>sort-colors Notes</h2><hr>Same 
