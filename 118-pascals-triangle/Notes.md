@@ -1,1 +1,1 @@
-<h2>pascals-triangle Notes</h2><hr>T
+<h2>pascals-triangle Notes</h2><hr>More effective as 
