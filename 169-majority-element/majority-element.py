@@ -1,16 +1,14 @@
-from collections import Counter
-
 class Solution:
-    def majorityElement(self,arr):
-        # Size of the given array
-        n = len(arr)
+    def majorityElement(self, nums: List[int]) -> int:
+        count, element = 0, 0
 
-        # Count the occurrences of each element using Counter
-        counter = Counter(arr)
+        for val in nums:
+            if count == 0 :
+                count += 1
+                element = val
+            elif element == val:
+                count += 1
+            else:
+                count -= 1
 
-        # Searching for the majority element
-        for num, count in counter.items():
-            if count > (n // 2):
-                return num
-
-        return -1
+        return element 
