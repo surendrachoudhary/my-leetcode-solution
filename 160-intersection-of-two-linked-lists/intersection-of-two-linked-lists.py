@@ -6,24 +6,20 @@
 
 class Solution:
     def getIntersectionNode(self, headA: ListNode, headB: ListNode) -> Optional[ListNode]:
-        stackA = ['A']
-        stackB = ['B']
+        # Create a set to store nodes from list A
+        seen_nodes = set()
 
-        while headA or headB:
-            if headA:
-                stackA.append(headA)
-                headA = headA.next
+        # Traverse list A and store nodes in the set
+        tmp = headA
+        while tmp:
+            seen_nodes.add(tmp)
+            tmp = tmp.next
 
-            if headB:
-                stackB.append(headB)
-                headB = headB.next
+        # Traverse list B and check if any node is in the set
+        tmp = headB
+        while tmp:
+            if tmp in seen_nodes:
+                return tmp  # Return the node
+            tmp = tmp.next
 
-        prev = None
-        while stackA and stackB:
-            nodeA = stackA.pop(-1)
-            nodeB = stackB.pop(-1)
-
-            if nodeA != nodeB:
-                return prev
-
-            prev = nodeA
+        return None  # Return None if no intersection node found
