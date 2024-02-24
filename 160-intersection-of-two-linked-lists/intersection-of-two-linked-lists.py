@@ -6,20 +6,35 @@
 
 class Solution:
     def getIntersectionNode(self, headA: ListNode, headB: ListNode) -> Optional[ListNode]:
-        # Create a set to store nodes from list A
-        seen_nodes = set()
-
-        # Traverse list A and store nodes in the set
+        # Calculate the length of linked list A
+        countA = 0
         tmp = headA
         while tmp:
-            seen_nodes.add(tmp)
+            countA += 1
             tmp = tmp.next
 
-        # Traverse list B and check if any node is in the set
+        # Calculate the length of linked list B
+        countB = 0
         tmp = headB
         while tmp:
-            if tmp in seen_nodes:
-                return tmp  # Return the node
-            tmp = tmp.next
+            countB += 1
+            tmp = tmp.next 
 
-        return None  # Return None if no intersection node found
+        # Move pointers to the same starting position
+        tmp1, tmp2 = headA, headB
+        if countA > countB:
+            step = countA - countB
+            for i in range(step):
+                tmp1 = tmp1.next
+        elif countA < countB:
+            step = countB - countA
+            for i in range(step):
+                tmp2 = tmp2.next 
+
+        # Move both pointers until they meet
+        while tmp1 != tmp2:
+            tmp1 = tmp1.next 
+            tmp2 = tmp2.next
+        
+        # Return the intersection node or None if no intersection
+        return tmp1
