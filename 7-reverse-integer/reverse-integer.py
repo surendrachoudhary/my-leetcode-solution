@@ -1,19 +1,21 @@
 class Solution:
     def reverse(self, x: int) -> int:
-        s = ""
-        sign = 1
+        # Extracting the sign of the input integer
+        sign = 1 if x >= 0 else -1
+        # Converting negative numbers to positive for reversal
+        x = abs(x)
+        
+        result = 0
+        
+        while x:
+            result = (result * 10) + x % 10 
+            x = x // 10
 
-        for i in str(x):
-            if i == "-":
-                sign = -1
-            else:
-                s = i + s
+        # Applying the sign to the result
+        result *= sign
 
-        result = sign * int(s)
-
-        if result < -2**31:
-            return 0
-        elif result > 2**31-1:
+        # Check if the result overflows 32-bit integer range
+        if result < -2**31 or result > 2**31 - 1:
             return 0
         else:
-            return result 
+            return result
