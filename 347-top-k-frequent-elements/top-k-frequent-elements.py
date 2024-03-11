@@ -15,13 +15,15 @@ class Solution:
         for num, freq in counter.items():
             # Push tuples containing frequency and element into the heap
             heapq.heappush(heap, (-freq, num))
-        
+        i = 1
         # Pop elements from the heap until it is empty
-        while heap:
+        while i <= k:
             # Pop the tuple with the highest frequency from the heap
             freq, num = heapq.heappop(heap)
             # Append the element to the answer list
             ans.append(num)
 
+            i += 1
+
         # Return the top k frequent elements
-        return ans[:k]
+        return ans
