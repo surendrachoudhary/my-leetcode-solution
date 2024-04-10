@@ -52,22 +52,25 @@ class Codec:
 
         q = deque()
         tokens = data.split(",")
-        
-        root_val = int(tokens.pop(0))
+        index = 0
+        root_val = int(tokens[index])
+        index += 1
         root = TreeNode(root_val)
         q.append(root)
 
         while q:
             node = q.popleft()
 
-            left_val = tokens.pop(0)
+            left_val = tokens[index]
+            index += 1
 
             if left_val != "#":
                 left_node = TreeNode(int(left_val))
                 node.left = left_node
                 q.append(left_node)
             
-            right_val = tokens.pop(0)
+            right_val = tokens[index]
+            index += 1
 
             if right_val != "#":
                 right_node = TreeNode(int(right_val))
