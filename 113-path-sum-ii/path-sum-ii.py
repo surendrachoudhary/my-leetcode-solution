@@ -7,8 +7,9 @@
 class Solution:
     def pathSum(self, root: Optional[TreeNode], targetSum: int) -> List[List[int]]:
         ans = []
+        cur_path = []
 
-        def dfs(root, cur_path ,targetSum):
+        def dfs(root ,targetSum):
             if root == None:
                 return 0
 
@@ -21,12 +22,12 @@ class Solution:
                 cur_path.pop()
                 return 
 
-            left = dfs(root.left, cur_path ,targetSum)
-            right = dfs(root.right, cur_path ,targetSum)
+            left = dfs(root.left ,targetSum)
+            right = dfs(root.right ,targetSum)
 
             cur_path.pop()
-            # return 
+            return 
 
-        dfs(root,[] ,targetSum)
+        dfs(root,targetSum)
 
         return ans
