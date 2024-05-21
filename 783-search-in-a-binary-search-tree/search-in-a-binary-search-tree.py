@@ -11,6 +11,7 @@ class Solution:
         while tmp is not None:
             if val == tmp.val:
                 return tmp 
+                break
             if tmp.val > val:
                 tmp = tmp.left
             else:
