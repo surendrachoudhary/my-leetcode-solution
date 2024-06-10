@@ -8,20 +8,25 @@ class Solution:
     def bstFromPreorder(self, preorder: List[int]) -> Optional[TreeNode]:
         if len(preorder) == 0:
             return None
+            
+        idx = 0
+        def helper(lower = float('-inf'), upper=float('inf')):
+            nonlocal idx
+            if idx == len(preorder):
+                return None 
 
-        root = preorder[0]
-        rootNode = TreeNode(root)
+            val = preorder[idx]
 
-        rootLeft = []
-        rootRight =   []
+            if val < lower or val > upper:
+                return None 
 
-        for i in preorder[1:]:
-            if root > i:
-                rootLeft.append(i)
-            elif root < i:
-                rootRight.append(i)
+            idx += 1
+            rootNode = TreeNode(val)
 
-        rootNode.left = self.bstFromPreorder(rootLeft)
-        rootNode.right = self.bstFromPreorder(rootRight)
-         
-        return rootNode
+            rootNode.left = helper(lower, val)
+            rootNode.right = helper(val, upper)
+
+
+            return rootNode
+
+        return helper()
