@@ -1,39 +1,20 @@
 class Solution:
     def floodFill(self, image: List[List[int]], sr: int, sc: int, color: int) -> List[List[int]]:
-        row = len(image)
-        col = len(image[0])
-        st_color = image[sr][sc]
+        original_color = image[sr][sc]
+        if original_color == color:
+            return image
         
-        if st_color == color:
-            return image 
-
-        visited = set()
-        q = deque()
-        q.append((sr,sc))
-        image[sr][sc] = color 
-        visited.add((sr,sc))
+        rows, cols = len(image), len(image[0])
+        directions = [(-1, 0), (1, 0), (0, -1), (0, 1)]
+        q = deque([(sr, sc)])
+        image[sr][sc] = color
         
         while q:
-            sr,sc = q.popleft()
-            
-            if sr-1 >= 0 and (sr-1,sc) not in visited and image[sr-1][sc] == st_color:
-                image[sr-1][sc] = color 
-                visited.add((sr-1,sc))
-                q.append((sr-1,sc))
-
-            if sr+1 < row and (sr+1,sc) not in visited and image[sr+1][sc] == st_color:
-                image[sr+1][sc] = color 
-                visited.add((sr+1,sc))
-                q.append((sr+1,sc))
-
-            if sc-1 >= 0 and (sr,sc-1) not in visited and image[sr][sc-1] == st_color :
-                image[sr][sc-1] = color 
-                visited.add((sr,sc-1))
-                q.append((sr,sc-1))
-
-            if sc+1 < col and (sr,sc+1) not in visited and image[sr][sc+1] == st_color:
-                image[sr][sc+1] = color 
-                visited.add((sr,sc+1))
-                q.append((sr, sc+1))
+            x, y = q.popleft()
+            for dx, dy in directions:
+                nx, ny = x + dx, y + dy
+                if 0 <= nx < rows and 0 <= ny < cols and image[nx][ny] == original_color:
+                    image[nx][ny] = color
+                    q.append((nx, ny))
         
         return image
