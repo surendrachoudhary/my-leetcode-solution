@@ -3,24 +3,25 @@ class Solution:
         n = len(graph)
         color_list = [0] * n  # 0: uncolored, 1: color1, -1: color2
 
-        def bfs(start):
-            q = deque([start])
-            color_list[start] = 1  # Start coloring with 1
+        def dfs(i):
+            for nei in graph[i]:
+                if color_list[nei] == 0:
+                    color_list[nei] = - color_list[i]
+                    if not dfs(nei):
+                        return False 
+                elif color_list[nei] == color_list[i]:
+                    return False 
+            
+            return True 
 
-            while q:
-                node = q.popleft()
-                for neighbor in graph[node]:
-                    if color_list[neighbor] == 0:  # If not colored, color with opposite color
-                        color_list[neighbor] = -color_list[node]
-                        q.append(neighbor)
-                    elif color_list[neighbor] == color_list[node]:  # If same color as current node, not bipartite
-                        return False
-            return True
 
-        # Need to check each component of the graph
         for i in range(n):
-            if color_list[i] == 0:  # If the node is not yet colored, start a BFS
-                if not bfs(i):
+            if color_list[i] == 0:
+                color_list[i] = 1
+                if not dfs(i):
                     return False
 
+        print(color_list)
         return True
+
+
