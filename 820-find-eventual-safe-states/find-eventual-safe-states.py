@@ -1,32 +1,40 @@
+# BFS technique (DFS is better than BFS but you should know this as we are here to build logic and not to slove question)
+
 class Solution:
     def eventualSafeNodes(self, graph: List[List[int]]) -> List[int]:
-        total_nodes = len(graph)
-        visited_set = [False] * total_nodes
-        recursion_set = [False] * total_nodes
-        safe_node = [False] * total_nodes
+        n = len(graph)
+        rev_adj = [[] for _ in range(n)]
+        indegrees = [0] * n
 
-        def dfs(node):
-            visited_set[node] = True 
-            recursion_set[node] = True 
+        for node, neighbours in enumerate(graph):
+            for neighbour in neighbours:
+                rev_adj[neighbour].append(node)
+                indegrees[node] += 1
+        
+        q = deque()
 
-            for nei in graph[node]:
-                if not visited_set[nei]:
-                    if dfs(nei):
-                        return True 
-                         
-                elif recursion_set[nei]:
-                    return True  
+        for i in range(n):
+            if indegrees[i] == 0:
+                q.append(i)
+
+        safe = [False] * n
+        while q:
+            node = q.popleft()
+            safe[node] = True
+
+            for nei in rev_adj[node]:
+                indegrees[nei] -= 1
+
+                if indegrees[nei] == 0:
+                    q.append(nei)
+
+        safe_nodes = []
+
+        for i in range(n):
+            if safe[i]:
+                safe_nodes.append(i)
             
+        return safe_nodes
             
-            safe_node[node] = True 
 
-            recursion_set[node] = False 
-
-           
-
-        for node in range(total_nodes):
-            if not visited_set[node]:
-                dfs(node)
-
-        result = [ node for node in range(len(safe_node)) if safe_node[node] ]
-        return result 
+        
