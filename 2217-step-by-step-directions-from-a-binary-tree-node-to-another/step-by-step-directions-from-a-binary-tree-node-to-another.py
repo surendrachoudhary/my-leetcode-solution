@@ -48,4 +48,3 @@ class Solution:
         # Join both paths to form the result
         return ''.join(path_to_start + path_to_dest)
 
-
