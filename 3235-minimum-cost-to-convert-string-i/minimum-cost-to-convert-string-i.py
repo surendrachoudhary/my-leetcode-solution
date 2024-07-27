@@ -10,19 +10,15 @@ class Solution:
 
         def dijkstra(src):
             pq = [(0, src)]
-            min_cost_map = {}
+            min_cost_map = {src: 0}
 
             while pq:
                 current_cost, node = heapq.heappop(pq)
-
-                if node in min_cost_map:
-                    continue
-                
-                min_cost_map[node] = current_cost
                 
                 for nei, nei_cost in adj_list[node]:
                     new_cost = current_cost + nei_cost
                     if nei not in min_cost_map or new_cost < min_cost_map[nei]:
+                        min_cost_map[nei] = new_cost
                         heapq.heappush(pq, (new_cost, nei))
 
             return min_cost_map
@@ -38,11 +34,3 @@ class Solution:
 
         return res
 
-# Example usage:
-# sol = Solution()
-# source = "abc"
-# target = "def"
-# original = ["a", "b", "c", "a"]
-# changed = ["d", "e", "f", "b"]
-# cost = [1, 2, 3, 4]
-# print(sol.minimumCost(source, target, original, changed, cost))  # Example call
