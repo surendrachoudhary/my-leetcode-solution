@@ -1,16 +1,14 @@
 class Solution:
     def climbStairs(self, n: int) -> int:
-        dic = {}
-        def helper(n):
-            if n == 0:
-                return 1
+        dp_array = [0] * (n + 1 )
+        if n == 1:
+            return 1
+        dp_array[1] = 1 
+        dp_array[2] = 2 
 
-            if n < 0:
-                return 0
+        num = 3
+        while num <= n:
+            dp_array[num] = dp_array[num-1] + dp_array[num-2]
+            num += 1
 
-            if n in dic:
-                return dic[n]
-
-            dic[n] = helper(n-1) + helper(n-2)
-            return dic[n]
-        return helper(n)
+        return dp_array[n]
