@@ -8,14 +8,22 @@ class Node:
 
 class Solution:
     def postorder(self, root: 'Node') -> List[int]:
+        #iterative way after recursive 
         ans = []
-        def helper(root):
-            if root is None:
-                return 
 
-            for c in root.children:
-                helper(c)
-            ans.append(root.val)
-        
-        helper(root)
+        if root is None:
+            return []
+
+        stack = [(root, False)]
+
+        while stack:
+            node, visited = stack.pop()
+
+            if visited:
+                ans.append(node.val)
+            else:
+                stack.append((node, True))
+                for c in node.children[::-1]:
+                    stack.append((c, False))
+       
         return ans 
